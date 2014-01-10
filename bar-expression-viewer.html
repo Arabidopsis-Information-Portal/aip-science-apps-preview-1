@@ -1,0 +1,60 @@
+<h1>Enter an AGI ID to see its expression on the Developmental Map</h1>
+    <p>Query (Any AGI ID, e.g. AT1G10940, AT3G62980):</p>
+    <form id="geneExpressionForm">
+    	<input type="text" name="gene" id="geneE" value="AT3G62980" />
+    	<button type="button" class="btn btn-success"id="geneSubmitE">Submit</button>
+    	<button type="button" class="btn btn-danger"id="clearGraphE">Clear</button>
+	</form>
+
+    <div id="messagingE" class="hidden"></div>
+    <div id="progressE" class="hidden">
+    	<h4>Loading</h4>
+		<div class="progress progress-striped active" style="width: 292px;">
+			<div class="progress-bar"  role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;">
+				<span class="sr-only">Loading Image</span>
+			</div>
+		</div>
+    </div>
+
+	<img id="image" class="hidden"></img>
+	
+	<div class="resultE"></div>
+	<div><p>Data & web services provided by The Bio-Analytic Resource for Plant Biology (BAR): <a href="http://bar.utoronto.ca/webservices" target="_blank">http://bar.utoronto.ca/webservices</a>/</p></div> 
+<script type="text/javascript">
+jQuery(function($) {
+  var url_base = "/apiproxy/efp_service/efp_service.php?request=";
+  var query= '{"agi":"QUERY_GENE","datasource":"Developmental_Map"}';
+
+      $("#clearGraphE").click(function() {
+        $("#image").addClass('hidden').html('');;
+        $("#geneE").val('');
+    });
+        //image load success! yay!
+	$('#image').bind('load', function() {
+		$('#progressE').addClass('hidden');
+	});
+        //image load error
+	$('#image').bind('error', function() {
+		$("#messagingE" ).addClass("alert alert-danger").removeClass("hidden");
+		$( "#messagingE" ).html( "We could not load the image for " + $("#geneE").val());
+		$("#progressE").addClass('hidden');
+		$(this).addClass('hidden');
+	});
+	$("#geneSubmitE").click(function(e){	
+		var gene = $("#geneE").val();
+		var url = url_base + query.replace(/QUERY_GENE/, gene);
+				
+		$(".result" ).removeClass("alert alert-danger");
+		$("#messagingE").addClass('hidden');
+		
+		if(gene.length > 0) {
+			$('#progressE').removeClass('hidden');
+			$("#image").attr('src', url).removeClass('hidden');
+
+		} else {
+			alert("You must enter a gene first.");
+			return;
+		}						
+	});
+});
+</script>
