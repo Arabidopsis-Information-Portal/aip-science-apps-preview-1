@@ -1,8 +1,8 @@
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script type="text/javascript" src="/cdn/cytoscape.js-2.0.4/cytoscape.min.js"></script>
-    <script type="text/javascript" src="/cdn/cytoscape.js-2.0.4/arbor.js"></script>
+    <script type="text/javascript" src="/sites/all/libraries/cytoscape.js/cytoscape.min.js"></script>
+    <script type="text/javascript" src="/sites/all/libraries/cytoscape.js/arbor.js"></script>
 
     <style type="text/css">
         body { 
@@ -139,7 +139,7 @@ jQuery(function($){
 		var edges = [];
 		var elements = {};
 		var gene = $("#gene").val();
-		var url = "/apiproxy/BARClient/"+$("#gene").val();
+		var url = "https://api.araport.org/data/BioAnalyticResource/interactionBrowser/pr2-0.1/"+$("#gene").val();
 		$(".result" ).removeClass("alert alert-danger");
 
 		

@@ -1,4 +1,5 @@
-<h1>Enter an AGI ID to see its expression on the Developmental Map</h1>
+    
+    <h1>Enter an AGI ID to see its expression on the Developmental Map</h1>
     <p>Query (Any AGI ID, e.g. AT1G10940, AT3G62980):</p>
     <form id="geneExpressionForm">
     	<input type="text" name="gene" id="geneE" value="AT3G62980" />
@@ -22,7 +23,7 @@
 	<div><p>Data & web services provided by The Bio-Analytic Resource for Plant Biology (BAR): <a href="http://bar.utoronto.ca/webservices" target="_blank">http://bar.utoronto.ca/webservices</a>/</p></div> 
 <script type="text/javascript">
 jQuery(function($) {
-  var url_base = "/apiproxy/efp_service/efp_service.php?request=";
+  var url_base = "https://api.araport.org/data/BioAnalyticResource/efp_service/pr2-0.1/?request=";
   var query= '{"agi":"QUERY_GENE","datasource":"Developmental_Map"}';
 
       $("#clearGraphE").click(function() {
