@@ -15,7 +15,10 @@
   <button type="button" class="btn btn-danger" id="ebi-interaction-viewer-form-reset">Clear</button>
 </form>
 
-<div id="ebi-interaction-viewer-cy" class="hidden"></div>
+<div style="position: relative">
+  <div id="ebi-interaction-viewer-cy" class="hidden"></div>
+  <div id="ebi-interaction-viewer-tips"></div>
+</div>
 <div id="ebi-interaction-viewer-result" class="hidden"></div>
 
 <div id="ebi-interaction-viewer-legend" class="row hidden">
@@ -269,32 +272,16 @@
 
             log( CV );
 
-            $('#ebi-interaction-viewer-cy').qtip({
-              content: 'Experiment: ' + experiment + '<br>Confidence score: ' + CV + '<br>First author: ' + firstAuthor + '<br>Source Database: ' + sourceDatabase + '<br>Publication: ' + publication ,
-              show: {
-                delay:2000,
-                ready: true
-              },
-              hide:{
-                event: 'click'
-              },
-              position: {
-                my: 'top center',
-                at: 'bottom center',
-                target:'mouse',
-                adjust: {
-                mouse:false,
-                  cyViewport: true
-                }
-              },
-              style: {
-                classes: 'qtip-bootstrap',
-                tip: {
-                  width: 16,
-                  height: 8
-                }
-              }
-            });
+            $('#ebi-interaction-viewer-tips')
+              .css({position: 'absolute', left: x, top: y})
+              .tooltip({
+                html: true,
+                title: 'Experiment: ' + experiment + '<br>Confidence score: ' + CV + '<br>First author: ' + firstAuthor + '<br>Source Database: ' + sourceDatabase + '<br>Publication: ' + publication
+              })
+              .tooltip('show');
+          });
+          cy.on('mouseout','edge', function( event ) {
+            $('#ebi-interaction-viewer-tips').tooltip('destroy');
           });
         }
       });
