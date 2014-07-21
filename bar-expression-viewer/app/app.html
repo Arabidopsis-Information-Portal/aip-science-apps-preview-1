@@ -1,0 +1,32 @@
+<link rel="stylesheet" href="styles/app.css" />
+
+<div class="gene_expression_viewer">
+  <h2>Enter an AGI ID to see its expression on the Developmental Map</h2>
+
+  <p>Query (Any AGI ID, e.g. AT1G10940, AT3G62980):</p>
+
+  <form name="gene_expression_viewer_form" class="form-inline">
+
+    <div class="form-group">
+      <label for="gene_expression_viewer_gene" class="sr-only">AGI ID</label>
+      <input type="text" name="gene_expression_viewer_gene" id="gene_expression_viewer_gene" data-initial-value="AT3G62980" class="form-control" placeholder="AGI ID">
+    </div>
+    <button type="submit" class="btn btn-success">Submit</button>
+    <button type="reset" class="btn btn-danger">Clear</button>
+  </form>
+
+  <div class="gene_expression_viewer_progress hidden">
+    <h4>Loading</h4>
+    <div class="progress progress-striped active">
+      <div class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;">
+        <span class="sr-only">Loading Image</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="gene_expression_viewer_messages"></div>
+  <div class="gene_expression_viewer_result"></div>
+
+  <p>Data &amp; web services provided by The Bio-Analytic Resource for Plant Biology (BAR): <a href="http://bar.utoronto.ca/webservices" target="_blank">http://bar.utoronto.ca/webservices</a>/</p>
+</div>
+<script type="text/javascript" src="scripts/app.js"></script>
