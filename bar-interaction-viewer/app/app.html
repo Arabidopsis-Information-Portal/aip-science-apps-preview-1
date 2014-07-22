@@ -1,0 +1,22 @@
+<link rel="stylesheet" href="styles/app.css" />
+<div class="science-app" data-app-name="bar-interaction-viewer">
+<h1>Enter a gene name to see its protein-protein interactions</h1>
+
+<p>Query (Any gene name or AGI ID, e.g. ASK1, AT1G10940, AT3G62980):</p>
+
+<form id="bar-interaction-viewer-form" class="form-inline">
+  <input type="text" name="gene" class="form-control" value="AT3G62980" placeholder="Gene name or AGI ID"/>
+  <button type="submit" class="btn btn-success">Submit</button>
+  <button type="button" id="bar-interaction-viewer-form-reset" class="btn btn-danger">Clear</button>
+</form>
+
+<div id="bar-interaction-viewer-cy" class="hidden"></div>
+<div id="bar-interaction-viewer-result"></div>
+
+<p></p>
+<p>
+  Data &amp; web services provided by The Bio-Analytic Resource for Plant
+  Biology (BAR): <a href="http://bar.utoronto.ca/webservices" target="_blank">http://bar.utoronto.ca/webservices/</a>.
+</p>
+</div>
+<script type="text/javascript" src="scripts/app.js"></script>
